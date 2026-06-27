@@ -135,6 +135,7 @@
             object-fit: cover;
             border: 1px solid #e2e8f0;
             background: #e2e8f0;
+            display: inline-block; /* Ensure div flags have dimensions */
         }
 
         .team-name {
@@ -192,6 +193,21 @@
             font-family: inherit;
         }
 
+        /* Drag and Drop Styles */
+        .team-row.draggable-row {
+            cursor: grab;
+            transition: background-color 0.2s, outline 0.2s;
+        }
+        .team-row.draggable-row:active {
+            cursor: grabbing;
+        }
+        .team-row.drag-over {
+            background-color: #dbeafe;
+            outline: 2px dashed var(--accent-color);
+            outline-offset: -2px;
+            border-radius: 4px;
+        }
+
         /* Column grid spacing to simulate heights alignment */
         .col-r32-l  { grid-column: 1; }
         .col-r16-l  { grid-column: 2; }
@@ -212,7 +228,7 @@
 <body>
 
     <div class="header-container">
-        <h1>Knockout bracket</h1>
+        <h1>Knockout Bracket</h1>
         <button class="btn-edit" id="btnEdit" onclick="toggleEditMode()">Edit Data</button>
     </div>
 
@@ -234,32 +250,32 @@
                     <span class="match-id" data-key="m74-id">M74</span>
                     <div class="match-meta"><span data-key="m74-d">06/30/2026</span><span data-key="m74-t">03:30</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/de.png"><span class="team-name" data-key="m74-t1">GER</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/py.png"><span class="team-name" data-key="m74-t2">PAR</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/de.png" alt=""><span class="team-name" data-key="m74-t1">GER</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/py.png" alt=""><span class="team-name" data-key="m74-t2">PAR</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" data-key="m77-id">M77</span>
                     <div class="match-meta"><span data-key="m77-d">07/01/2026</span><span data-key="m77-t">04:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/fr.png"><span class="team-name" data-key="m77-t1">FRA</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/se.png"><span class="team-name" data-key="m77-t2">SWE</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/fr.png" alt=""><span class="team-name" data-key="m77-t1">FRA</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/se.png" alt=""><span class="team-name" data-key="m77-t2">SWE</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" data-key="m73-id">M73</span>
                     <div class="match-meta"><span data-key="m73-d">06/29/2026</span><span data-key="m73-t">02:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/za.png"><span class="team-name" data-key="m73-t1">RSA</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ca.png"><span class="team-name" data-key="m73-t2">CAN</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/za.png" alt=""><span class="team-name" data-key="m73-t1">RSA</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ca.png" alt=""><span class="team-name" data-key="m73-t2">CAN</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" data-key="m75-id">M75</span>
                     <div class="match-meta"><span data-key="m75-d">06/30/2026</span><span data-key="m75-t">08:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/nl.png"><span class="team-name" data-key="m75-t1">NED</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ma.png"><span class="team-name" data-key="m75-t2">MAR</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/nl.png" alt=""><span class="team-name" data-key="m75-t1">NED</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ma.png" alt=""><span class="team-name" data-key="m75-t2">MAR</span></div>
                     </div>
                 </div>
                 <div class="match-box">
@@ -274,7 +290,7 @@
                     <span class="match-id" data-key="m84-id">M84</span>
                     <div class="match-meta"><span data-key="m84-d">07/03/2026</span><span data-key="m84-t">02:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/es.png"><span class="team-name" data-key="m84-t1">ESP</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/es.png" alt=""><span class="team-name" data-key="m84-t1">ESP</span></div>
                         <div class="team-row"><div class="flag"></div><span class="team-name" data-key="m84-t2">2J</span></div>
                     </div>
                 </div>
@@ -282,15 +298,15 @@
                     <span class="match-id" data-key="m81-id">M81</span>
                     <div class="match-meta"><span data-key="m81-d">07/02/2026</span><span data-key="m81-t">07:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/us.png"><span class="team-name" data-key="m81-t1">USA</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ba.png"><span class="team-name" data-key="m81-t2">BIH</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/us.png" alt=""><span class="team-name" data-key="m81-t1">USA</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ba.png" alt=""><span class="team-name" data-key="m81-t2">BIH</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" data-key="m82-id">M82</span>
                     <div class="match-meta"><span data-key="m82-d">07/02/2026</span><span data-key="m82-t">03:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/be.png"><span class="team-name" data-key="m82-t1">BEL</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/be.png" alt=""><span class="team-name" data-key="m82-t1">BEL</span></div>
                         <div class="team-row"><div class="flag"></div><span class="team-name" data-key="m82-t2">3AEHIJ</span></div>
                     </div>
                 </div>
@@ -457,23 +473,23 @@
                     <span class="match-id" style="left:auto; right:-32px; text-align:left;" data-key="m76-id">M76</span>
                     <div class="match-meta"><span data-key="m76-d">06/30/2026</span><span data-key="m76-t">00:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/br.png"><span class="team-name" data-key="m76-t1">BRA</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/jp.png"><span class="team-name" data-key="m76-t2">JPN</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/br.png" alt=""><span class="team-name" data-key="m76-t1">BRA</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/jp.png" alt=""><span class="team-name" data-key="m76-t2">JPN</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" style="left:auto; right:-32px; text-align:left;" data-key="m78-id">M78</span>
                     <div class="match-meta"><span data-key="m78-d">07/01/2026</span><span data-key="m78-t">00:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ci.png"><span class="team-name" data-key="m78-t1">CIV</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/no.png"><span class="team-name" data-key="m78-t2">NOR</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ci.png" alt=""><span class="team-name" data-key="m78-t1">CIV</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/no.png" alt=""><span class="team-name" data-key="m78-t2">NOR</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" style="left:auto; right:-32px; text-align:left;" data-key="m79-id">M79</span>
                     <div class="match-meta"><span data-key="m79-d">07/01/2026</span><span data-key="m79-t">08:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/mx.png"><span class="team-name" data-key="m79-t1">MEX</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/mx.png" alt=""><span class="team-name" data-key="m79-t1">MEX</span></div>
                         <div class="team-row"><div class="flag"></div><span class="team-name" data-key="m79-t2">3CEFHI</span></div>
                     </div>
                 </div>
@@ -489,23 +505,23 @@
                     <span class="match-id" style="left:auto; right:-32px; text-align:left;" data-key="m86-id">M86</span>
                     <div class="match-meta"><span data-key="m86-d">07/04/2026</span><span data-key="m86-t">05:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ar.png"><span class="team-name" data-key="m86-t1">ARG</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/cv.png"><span class="team-name" data-key="m86-t2">CPV</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ar.png" alt=""><span class="team-name" data-key="m86-t1">ARG</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/cv.png" alt=""><span class="team-name" data-key="m86-t2">CPV</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" style="left:auto; right:-32px; text-align:left;" data-key="m88-id">M88</span>
                     <div class="match-meta"><span data-key="m88-d">07/04/2026</span><span data-key="m88-t">01:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/au.png"><span class="team-name" data-key="m88-t1">AUS</span></div>
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/eg.png"><span class="team-name" data-key="m88-t2">EGY</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/au.png" alt=""><span class="team-name" data-key="m88-t1">AUS</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/eg.png" alt=""><span class="team-name" data-key="m88-t2">EGY</span></div>
                     </div>
                 </div>
                 <div class="match-box">
                     <span class="match-id" style="left:auto; right:-32px; text-align:left;" data-key="m85-id">M85</span>
                     <div class="match-meta"><span data-key="m85-d">07/03/2026</span><span data-key="m85-t">10:00</span></div>
                     <div class="match-teams">
-                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ch.png"><span class="team-name" data-key="m85-t1">SUI</span></div>
+                        <div class="team-row"><img class="flag" src="https://flagcdn.com/w20/ch.png" alt=""><span class="team-name" data-key="m85-t1">SUI</span></div>
                         <div class="team-row"><div class="flag"></div><span class="team-name" data-key="m85-t2">3EFGIJ</span></div>
                     </div>
                 </div>
@@ -525,6 +541,36 @@
     <script>
         let isEditMode = false;
 
+        // Dictionary to map 3-letter codes to flagcdn 2-letter codes
+        const flagMap = {
+            'GER': 'de', 'PAR': 'py', 'FRA': 'fr', 'SWE': 'se',
+            'RSA': 'za', 'CAN': 'ca', 'NED': 'nl', 'MAR': 'ma',
+            'ESP': 'es', 'USA': 'us', 'BIH': 'ba', 'BEL': 'be',
+            'BRA': 'br', 'JPN': 'jp', 'CIV': 'ci', 'NOR': 'no',
+            'MEX': 'mx', 'ARG': 'ar', 'CPV': 'cv', 'AUS': 'au',
+            'EGY': 'eg', 'SUI': 'ch', 'ENG': 'gb-eng', 'POR': 'pt',
+            'ITA': 'it', 'KOR': 'kr', 'URU': 'uy', 'CRO': 'hr',
+            'SEN': 'sn', 'COL': 'co', 'POL': 'pl', 'DEN': 'dk'
+        };
+
+        // Load data on start
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedData = localStorage.getItem('bracketData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                for (const key in data) {
+                    const el = document.querySelector(`[data-key="${key}"]`);
+                    if (el) {
+                        el.textContent = data[key];
+                        // Auto-update flags for teams that were loaded
+                        if (key.includes('-t1') || key.includes('-t2')) {
+                            updateFlagForElement(el);
+                        }
+                    }
+                }
+            }
+        });
+
         function toggleEditMode() {
             const btn = document.getElementById('btnEdit');
             isEditMode = !isEditMode;
@@ -541,7 +587,6 @@
         }
 
         function enableEditing() {
-            // Ubah text data-key menjadi Input Field
             const textElements = document.querySelectorAll('[data-key]');
             textElements.forEach(el => {
                 const currentText = el.textContent.trim();
@@ -552,28 +597,65 @@
                 input.setAttribute('data-old-el', el.tagName);
                 input.setAttribute('data-key-bind', el.getAttribute('data-key'));
                 
-                // Salin kelas/gaya dasar agar tidak merusak layout secara ekstrem saat mengetik
                 if(el.classList.contains('match-id')) input.style.width = "35px";
                 
+                // Update live bendera saat mengetik
+                if(el.classList.contains('team-name')) {
+                    input.addEventListener('input', function() {
+                        const row = this.closest('.team-row');
+                        if (row) updateFlag(this.value.trim(), row);
+                    });
+                }
+                
                 el.replaceWith(input);
+            });
+
+            // Aktifkan Drag and Drop pada team-row
+            const teamRows = document.querySelectorAll('.team-row');
+            teamRows.forEach(row => {
+                row.setAttribute('draggable', 'true');
+                row.addEventListener('dragstart', handleDragStart);
+                row.addEventListener('dragover', handleDragOver);
+                row.addEventListener('dragenter', handleDragEnter);
+                row.addEventListener('dragleave', handleDragLeave);
+                row.addEventListener('drop', handleDrop);
+                row.addEventListener('dragend', handleDragEnd);
+                row.classList.add('draggable-row');
             });
         }
 
         function disableEditing() {
+            // Hapus event Drag and Drop
+            const teamRows = document.querySelectorAll('.team-row');
+            teamRows.forEach(row => {
+                row.removeAttribute('draggable');
+                row.removeEventListener('dragstart', handleDragStart);
+                row.removeEventListener('dragover', handleDragOver);
+                row.removeEventListener('dragenter', handleDragEnter);
+                row.removeEventListener('dragleave', handleDragLeave);
+                row.removeEventListener('drop', handleDrop);
+                row.removeEventListener('dragend', handleDragEnd);
+                row.classList.remove('draggable-row', 'drag-over');
+            });
+
             const inputs = document.querySelectorAll('.editable-input');
+            const dataToSave = {};
+
             inputs.forEach(input => {
                 const key = input.getAttribute('data-key-bind');
                 const originalTag = input.getAttribute('data-old-el') || 'span';
-                const newValue = input.value;
+                const newValue = input.value.trim();
 
                 const newEl = document.createElement(originalTag);
                 newEl.setAttribute('data-key', key);
                 newEl.textContent = newValue;
 
-                // Kembalikan class esensial yang hilang akibat replace
+                // Save to local data object
+                dataToSave[key] = newValue;
+
+                // Restore class assignments
                 if(key.includes('-id')) {
                     newEl.className = 'match-id';
-                    // Sesuaikan posisi nomor pertandingan sebelah kanan
                     if(["m76-id","m78-id","m79-id","m80-id","m86-id","m88-id","m85-id","m87-id","m91-id","m92-id","m95-id","m96-id","m99-id","m100-id","m102-id","m103-id","m104-id"].includes(key)){
                         newEl.style.left = "auto";
                         newEl.style.right = "-32px";
@@ -584,9 +666,107 @@
                 }
 
                 input.replaceWith(newEl);
+
+                // Auto update flag if it's a team
+                if(key.includes('-t1') || key.includes('-t2')) {
+                    updateFlagForElement(newEl);
+                }
             });
 
-            // Opsional: Anda dapat menambahkan logika penyimpanan ke localStorage di sini agar data tidak hilang saat di-refresh.
+            // Save object to localStorage
+            localStorage.setItem('bracketData', JSON.stringify(dataToSave));
+        }
+
+        // --- Drag and Drop Handlers ---
+        let draggedInput = null;
+
+        function handleDragStart(e) {
+            if (!isEditMode) return;
+            const input = this.querySelector('input[data-key-bind*="-t1"], input[data-key-bind*="-t2"]');
+            if (input) {
+                draggedInput = input;
+                e.dataTransfer.effectAllowed = 'copy';
+                e.dataTransfer.setData('text/plain', input.value);
+                this.style.opacity = '0.5';
+            } else {
+                e.preventDefault();
+            }
+        }
+
+        function handleDragOver(e) {
+            if (!isEditMode) return;
+            e.preventDefault(); // Wajib untuk membolehkan drop
+            e.dataTransfer.dropEffect = 'copy';
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            if (!isEditMode) return;
+            this.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            if (!isEditMode) return;
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            if (!isEditMode) return;
+            e.stopPropagation();
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            
+            const targetInput = this.querySelector('input[data-key-bind*="-t1"], input[data-key-bind*="-t2"]');
+            if (targetInput && targetInput !== draggedInput) {
+                const draggedText = e.dataTransfer.getData('text/plain');
+                targetInput.value = draggedText;
+                
+                // Update bendera secara langsung setelah data dijatuhkan (drop)
+                updateFlag(draggedText.trim(), this);
+            }
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.style.opacity = '1';
+            const rows = document.querySelectorAll('.team-row');
+            rows.forEach(row => row.classList.remove('drag-over'));
+        }
+
+        // --- Fungsi Helper Bendera ---
+        function updateFlag(teamCode, row) {
+            teamCode = teamCode.toUpperCase();
+            let flagEl = row.querySelector('.flag');
+            if (!flagEl) return;
+
+            const mappedCode = flagMap[teamCode];
+            
+            if (mappedCode) {
+                const flagUrl = `https://flagcdn.com/w20/${mappedCode}.png`;
+                if (flagEl.tagName.toLowerCase() === 'div') {
+                    const newImg = document.createElement('img');
+                    newImg.className = 'flag';
+                    newImg.src = flagUrl;
+                    newImg.alt = teamCode;
+                    flagEl.replaceWith(newImg);
+                } else {
+                    flagEl.src = flagUrl;
+                    flagEl.alt = teamCode;
+                }
+            } else {
+                // Hapus bendera jika kode tidak ditemukan/dihapus
+                if (flagEl.tagName.toLowerCase() === 'img') {
+                    const newDiv = document.createElement('div');
+                    newDiv.className = 'flag';
+                    flagEl.replaceWith(newDiv);
+                }
+            }
+        }
+
+        function updateFlagForElement(teamEl) {
+            const teamCode = teamEl.textContent.trim();
+            const row = teamEl.closest('.team-row');
+            if (row) updateFlag(teamCode, row);
         }
     </script>
 </body>
